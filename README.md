@@ -32,5 +32,5 @@ module "myworkers" {
 
 ```
 
-You will need to validate the profile and region in the AWS standza.   All the values of the module will need to be changed/validated as well.  This is not all the variables that you can use for the module.  For now, you can eee all that variables you can use 
+You will need to validate the profile and region in the AWS stanza.   All the values of the module will need to be changed/validated as well.  This is not all the variables that you can use for the module.  For now, you can see all that variables you can use 
 for the module by viewing the variables.tf file in the modules diretory.
