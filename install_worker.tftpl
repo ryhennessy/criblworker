@@ -1,0 +1,4 @@
+echo "Configuring Worker Node"
+sudo curl -k "https://${leaderip}:9000/init/install-worker.sh?group=${workergroup}&token=${token}&user=cribl&install_dir=${install}" | sudo bash -
+#Re-Running the install boostrap script because of bug 
+sudo curl -k "https://${leaderip}:9000/init/install-worker.sh?group=${workergroup}&token=${token}&user=cribl&install_dir=${install}" | sudo bash -
