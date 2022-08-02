@@ -46,7 +46,7 @@ resource "aws_instance" "worker" {
   key_name                    = var.key_name
   associate_public_ip_address = true
   vpc_security_group_ids      = var.sg_groups
-  subnet_id                   = element(data.aws_subnets.current.ids, (length(data.aws_subnets.current.ids) % count.index))
+  subnet_id                   = element(data.aws_subnets.current.ids, count.index)
   tags = {
     Name   = "worker_node-${count.index + 1}"
     worker = "yes"
