@@ -22,7 +22,7 @@ provider "aws" {
 } 
 
 module "myworkers" {
-  source        = "../criblworker"
+  source        = "./criblworker"
   inst_type     = "t3.micro"
   key_name      = "<name of the Security Group Key""
   sg_groups     = ["sg-234jadl32dsdf"]
