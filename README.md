@@ -23,14 +23,14 @@ provider "aws" {
 module "myworkers" {
   source        = "../criblworker"
   inst_type     = "t3.micro"
-  key_name      = "hennessy"
-  sg_groups     = ["sg-0700f7f57dc2a2bb3"]
-  worker_count  = 3
-  stream_leader = "34.221.82.180"
-  worker_vpc_id = "vpc-0fbd644aa081265e4"
+  key_name      = "<name of the Security Group Key""
+  sg_groups     = ["sg-234jadl32dsdf"]
+  worker_count  = 3  // Number of Cribl Workers you would like
+  stream_leader = "<Existing Leader IP or DNS name>""
+  worker_vpc_id = "vpc-0fasdf334sadfdsf""
 }
 
 ```
 
-
-
+You will need to validate the profile and region in the AWS standza.   All the values of the module will need to be changed/validated as well.  This is not all the variables that you can use for the module.  For now, you can eee all that variables you can use 
+for the module by viewing the variables.tf file in the modules diretory.
