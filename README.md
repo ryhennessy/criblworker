@@ -18,8 +18,8 @@ module "myworkers" {
   inst_type           = "t3.micro"
   key_name            = "my_ssh_key"
   worker_count        = 1
-  stream_leader       = "34.221.82.180"
-  worker_vpc_id       = "vpc-0fbd644aa081265e4"
+  stream_leader       = "1.1.1.1"
+  worker_vpc_id       = "vpc-0fbaasdfsdf2dfd"
   cribl_service_ports = ["22", "9000", "9997", "9514"]
 }
 ```
