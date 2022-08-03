@@ -8,14 +8,15 @@ variable "key_name" {
   description = "Name of public ssh key used for AWS EC2 instances"
 }
 
-variable "sg_groups" {
+variable "existing_sg_groups" {
   type        = list(any)
-  description = "List of EC2 service groups to assign to worker nodes"
+  default     = []
+  description = "List of existing EC2 security groups to assign to worker nodes (Takes priority over cribl_service_ports)"
 }
 
 variable "worker_count" {
   type        = number
-  description = "Number of workers"
+  description = "Number of workers to deploy"
 }
 
 variable "stream_workergroup" {
@@ -46,7 +47,6 @@ variable "ssh_private_key" {
   type        = string
   default     = "~/.ssh/id_rsa"
   description = "Location of private ssh key.  Defaults to use id_rsa in the users home directory"
-
 }
 
 variable "worker_vpc_id" {
@@ -58,4 +58,9 @@ variable "worker_ami" {
   type        = string
   description = "AMI to use instead of the default Amazon Linux AMI"
   default     = null
+}
+
+variable "cribl_service_ports" {
+  type        = list(any)
+  description = "TCP ports to include the new security group"
 }

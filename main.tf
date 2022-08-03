@@ -39,13 +39,37 @@ data "aws_subnets" "current" {
   }
 }
 
+
+resource "aws_security_group" "cribl_sg" {
+  name        = "cribl_worker_sg"
+  count       = length(var.existing_sg_groups) != 0 ? 0 : 1
+  vpc_id      = var.worker_vpc_id
+  description = "Security Group for Cribl Workers"
+  dynamic "ingress" {
+    for_each = var.cribl_service_ports
+    content {
+      from_port   = ingress.value
+      to_port     = ingress.value
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+}
+
 resource "aws_instance" "worker" {
   count                       = var.worker_count
   ami                         = var.worker_ami != null ? var.worker_ami : data.aws_ami.east2-ami.id
   instance_type               = var.inst_type
   key_name                    = var.key_name
   associate_public_ip_address = true
-  vpc_security_group_ids      = var.sg_groups
+  vpc_security_group_ids      = length(var.existing_sg_groups) != 0 ? var.existing_sg_groups : [aws_security_group.cribl_sg[0].id]
   subnet_id                   = element(data.aws_subnets.current.ids, count.index)
   tags = {
     Name   = "worker_node-${count.index + 1}"
