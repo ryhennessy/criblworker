@@ -24,7 +24,19 @@ module "myworkers" {
 }
 ```
 
-All the values of in the example above will need to be changed/validated.   Confirm that you have the correct profile and region in the aws standza.   The variables for the module will need to be changed/validated as well.  For a full list of all the options that can be supplied to this module check out the "Module Variables" section below.
+Copy and paste the above example into a file named 'main.tf' an empty folder/directory.  All the values of in the example above will need to be changed/validated.   Confirm that you have the correct profile and region in the aws standza.   The variables for the module will need to be changed/validated as well.  For a full list of all the options that can be supplied to this module check out the "Module Variables" section below.
+
+Once you have all the correct settings applied in the module.   You can run the following two commands.
+
+This will pull down all the required information to run this Terraform code.
+```
+terraform init
+```
+
+This will apply the module.  The output will list all the changes that will be made.  At the end you are prompted to approve those changes (ie. Create the workers).  
+```
+terraform apply
+```
 
 
 ## Module Variables
