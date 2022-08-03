@@ -40,7 +40,7 @@ terraform apply
 
 
 ## Module Variables
-Below is the full list of variables/descriptions that can be used for this module. 
+Below is the full list of variables and descriptions that can be used for this module. 
 
 | Variable | Type | Default Value | Description |
 |--------- | ---- | ------------- | ------------|
