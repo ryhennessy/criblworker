@@ -24,7 +24,7 @@ module "myworkers" {
 }
 ```
 
-Copy and paste the above example into a file named 'main.tf' in an empty folder/directory.  All the values in the example above will need to be changed/validated.   Confirm that you have the correct profile and region in the aws section.   The variables for the module will need to be changed/validated as well.  For a full list of all the options that can be supplied to this module check out the "Module Variables" section below.
+Copy and paste the above example into a file named 'main.tf' in an empty folder/directory.  All the values in the example above will need to be changed/validated.   Confirm that you have the correct profile and region in the aws section.   The variables for the module will need to be changed/validated as well.  For a full list of all the options that can be supplied to this module, check out the "Module Variables" section below.
 
 Once you have all the correct settings applied in the module.   You can run the following two commands.
 
