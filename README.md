@@ -51,3 +51,4 @@ There are still a few items that are being investigated as additional functional
  * add tags to the install worker template
  * add worker nodes to a new/existing LB config
  * add submoduules for creating the same worker groups in GCP and Azure
+ * Test default image/type for graviton use cases
