@@ -40,7 +40,7 @@ Below is the full list of variables/descriptions that can be used for this modul
 | stream_install | string | /opt/cribl | Install location for Cribl.  Defaults to "/opt/cribl" |
 | stream_leader | string | *None* | DNS Name or IP of the Leader that worker(s) should join |
 | ssh_private_key | string | ~/.ssh/id_rsa | Location of private ssh key.  Defaults to use id_rsa in the users home directory |
-| worker_vpc_id | string | *None* |  VPC to use for Cribl worker nodes |
+| worker_vpc_id | string | *None* |  VPC to use for Cribl worker nodes.  The module will loop and add workers to subnets in supplied VPC |
 | worker_ami | string | null | Custom AMI to use for the worker nodes. If not supplied the module will use the latest Amazon Linux AMI |
 | cribl_service_ports | list | *None* | Creates a **new** security group and assigns the ports listed to it |
 
