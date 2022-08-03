@@ -1,7 +1,7 @@
 # criblworker
 Terraform module for creating Cribl workers and adding them to an existing leader and worker group
 
-**This is a WIP in progress!**
+**This is an active project and will be updated as enhancements, fixes, etc, are developed.  Please do not share this with customers yet**
 
 ## To Test This Module
 This module is still under development and has not been published anywhere besides my personal github account.  
