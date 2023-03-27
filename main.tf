@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+data "aws_ec2_instance_type" "worker_instance_type" {
+  instance_type = var.inst_type
+}
+
 data "aws_ami" "worker-ami" {
   most_recent = true
   owners      = ["amazon"]
@@ -28,7 +32,7 @@ data "aws_ami" "worker-ami" {
 
   filter {
     name   = "architecture"
-    values = ["x86_64"]
+    values = data.aws_ec2_instance_type.worker_instance_type.supported_architectures
   }
 }
 

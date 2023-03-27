@@ -65,7 +65,7 @@ There are still a few items that are being investigated as additional functional
  * add tags to the install worker template
  * add worker nodes to a new/existing LB config
  * add submoduules for creating the same worker groups in GCP and Azure
- * Test default image/type for graviton use cases
+ * ~~Test default image/type for graviton use cases~~
  * option to add workers to an auto scaling group.
  * add option to pull the content from local repo vs CDN.
  * add option to deploy the worker in a specific AZ/Subnet.
