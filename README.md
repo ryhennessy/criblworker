@@ -14,12 +14,12 @@ provider "aws" {
 } 
 
 module "myworkers" {
-  source              = "github.com/ryhennessy/criblworker"
-  inst_type           = "t3.micro"
-  key_name            = "my_ssh_key"
-  worker_count        = 1
-  cribl_leader       = "1.1.1.1"
-  worker_vpc_id       = "vpc-0fbaasdfsdf2dfd"
+  source               = "github.com/ryhennessy/criblworker"
+  inst_type            = "t3.micro"
+  key_name             = "my_ssh_key"
+  worker_count         = 1
+  cribl_leader         = "1.1.1.1"
+  worker_vpc_id        = "vpc-0fbaasdfsdf2dfd"
   worker_service_ports = ["22", "4200", "9000", "9997", "9514"]
 }
 ```
