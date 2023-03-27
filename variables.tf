@@ -19,25 +19,25 @@ variable "worker_count" {
   description = "Number of workers to deploy"
 }
 
-variable "stream_workergroup" {
+variable "cribl_workergroup" {
   type        = string
   default     = "default"
   description = "Name of the Cribl worker group to add the workers to.  Defaults to \"default\" or whatever the mapping applies"
 }
 
-variable "stream_token" {
+variable "cribl_token" {
   type        = string
   default     = "logstream_leader"
   description = "Cribl leader auth token.  Defaults to \"logstream_leader\""
 }
 
-variable "stream_install" {
+variable "cribl_install" {
   type        = string
   default     = "/opt/cribl"
   description = "Install location for Cribl.  Defaults to \"/opt/cribl\""
 }
 
-variable "stream_leader" {
+variable "cribl_leader" {
   type        = string
   default     = ""
   description = "DNS Name or IP of the Leader that worker(s) should join"
@@ -60,7 +60,19 @@ variable "worker_ami" {
   default     = null
 }
 
-variable "cribl_service_ports" {
+variable "worker_service_ports" {
   type        = list(any)
   description = "TCP ports to include the new security group"
+}
+
+variable "cribl_cloud_instance" {
+  type        = string
+  default     = ""
+  description = "Name of Cribl Cloud Instance, if adding worker nodes to cloud instance"
+}
+
+variable "cribl_tls" {
+  type        = string
+  default     = "yes"
+  description = "Should the on-prem worker to leader communication be over TLS"
 }

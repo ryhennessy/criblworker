@@ -1,2 +1,9 @@
-echo "Configuring Worker Node"
-sudo curl -k "https://${leaderip}:9000/init/install-worker.sh?group=${workergroup}&token=${token}&user=cribl&install_dir=${install}" | sudo bash -
+%{ if cloudinstance != "" }
+sudo curl -k "https://${cloudinstance}.cribl.cloud/init/install-worker.sh?group=${workergroup}&token=${token}&user=cribl&install_dir=${install}" | sudo bash -
+%{ else }
+%{ if tls != "yes" }
+sudo curl -k "http://${streamleader}:9000/init/install-worker.sh?group=${workergroup}&token=${token}&user=cribl&install_dir=${install}" | sudo bash -
+%{ else }
+sudo curl -k "https://${streamleader}:9000/init/install-worker.sh?group=${workergroup}&token=${token}&user=cribl&install_dir=${install}" | sudo bash -
+%{ endif }
+%{ endif }

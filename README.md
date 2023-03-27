@@ -18,9 +18,9 @@ module "myworkers" {
   inst_type           = "t3.micro"
   key_name            = "my_ssh_key"
   worker_count        = 1
-  stream_leader       = "1.1.1.1"
+  cribl_leader       = "1.1.1.1"
   worker_vpc_id       = "vpc-0fbaasdfsdf2dfd"
-  cribl_service_ports = ["22", "9000", "9997", "9514"]
+  worker_service_ports = ["22", "4200", "9000", "9997", "9514"]
 }
 ```
 
@@ -47,14 +47,16 @@ Below is the full list of variables and descriptions that can be used for this m
 | inst_type | String |  *None* | AWS instance type for the worker(s) |
 | existing_sg_groups | List |  *None* | List of existing EC2 security groups to assign to worker nodes (Takes priority over cribl_service_ports) |
 | worker_count | number | *None* | Number of workers to deploy |
-| stream_workergroup | string | default | Name of the Cribl worker group to add the workers to.  Defaults to "default" or whatever the mapping applies |
-| stream_token | string | logstream_leader | Cribl leader auth token.  Defaults to "logstream_leader" |
-| stream_install | string | /opt/cribl | Install location for Cribl.  Defaults to "/opt/cribl" |
-| stream_leader | string | *None* | DNS Name or IP of the Leader that worker(s) should join |
-| ssh_private_key | string | ~/.ssh/id_rsa | Location of private ssh key.  Defaults to use id_rsa in the users home directory |
+| cribl_workergroup | string | default | Name of the Cribl worker group to add the workers to.  Defaults to "default" or whatever the mapping applies |
+| cribl_token | string | logstream_leader | Cribl leader auth token.  Defaults to "logstream_leader" |
+| cribl_install | string | /opt/cribl | Install location for Cribl.  Defaults to "/opt/cribl" |
+| cribl_leader | string | *None* | DNS Name or IP of the Leader that worker(s) should join |
+| cribl_tls | string | yes | Use TLS when registering to a non-cloud Leader. Any value besides the default will turn off TLS |
+| ssh_private_key | string | ~/.ssh/id_rsa | Location of private ssh key.  Defaults to use id_rsa in the users home directory. Used for loging into machines to do post install tasks |
 | worker_vpc_id | string | *None* |  VPC to use for Cribl worker nodes.  The module will loop and add workers to subnets in supplied VPC |
 | worker_ami | string | null | Custom AMI to use for the worker nodes. If not supplied the module will use the latest Amazon Linux AMI |
-| cribl_service_ports | list | *None* | Creates a **new** security group and assigns the ports listed to it |
+| worker_service_ports | list | *None* | Creates a **new** security group and assigns the ports listed to it |
+| cribl_cloud_instance | string | *None* | Register created Cribl Worker Nodes to Cribl Cloud Instance. (Takes priority over cribl_leader. example value: "main-asdf-asdf-asdf") |
 
 
 

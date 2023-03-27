@@ -46,7 +46,7 @@ resource "aws_security_group" "cribl_sg" {
   vpc_id      = var.worker_vpc_id
   description = "Security Group for Cribl Workers"
   dynamic "ingress" {
-    for_each = var.cribl_service_ports
+    for_each = var.worker_service_ports
     content {
       from_port   = ingress.value
       to_port     = ingress.value
@@ -84,7 +84,7 @@ resource "aws_instance" "worker" {
   }
 
   provisioner "file" {
-    content     = templatefile("${path.module}/install_worker.tftpl", { leaderip = var.stream_leader, workergroup = var.stream_workergroup, token = var.stream_token, install = var.stream_install })
+    content     = templatefile("${path.module}/install_worker.tftpl", { cloudinstance = var.cribl_cloud_instance, tls = var.cribl_tls, streamleader = var.cribl_leader, workergroup = var.cribl_workergroup, token = var.cribl_token, install = var.cribl_install })
     destination = "/tmp/install_worker.sh"
   }
 
