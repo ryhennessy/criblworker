@@ -7,13 +7,13 @@ terraform {
   }
 }
 
-data "aws_ami" "east2-ami" {
+data "aws_ami" "worker-ami" {
   most_recent = true
   owners      = ["amazon"]
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-*-gp2"]
+    values = ["amzn2-ami*-hvm-*-gp2"]
   }
 
   filter {
@@ -65,7 +65,7 @@ resource "aws_security_group" "cribl_sg" {
 
 resource "aws_instance" "worker" {
   count                       = var.worker_count
-  ami                         = var.worker_ami != null ? var.worker_ami : data.aws_ami.east2-ami.id
+  ami                         = var.worker_ami != null ? var.worker_ami : data.aws_ami.worker-ami.id
   instance_type               = var.inst_type
   key_name                    = var.key_name
   associate_public_ip_address = true

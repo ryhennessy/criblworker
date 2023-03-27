@@ -69,4 +69,5 @@ There are still a few items that are being investigated as additional functional
  * option to add workers to an auto scaling group.
  * add option to pull the content from local repo vs CDN.
  * add option to deploy the worker in a specific AZ/Subnet.
- * add flag to deploy with a leader not using TLS.
+ * ~~add flag to deploy with a leader not using TLS.~~
+ * ~~add option to register workers to cloud instance.~~
